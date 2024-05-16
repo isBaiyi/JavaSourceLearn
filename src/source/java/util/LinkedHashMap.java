@@ -294,6 +294,13 @@ public class LinkedHashMap<K,V>
             a.before = b;
     }
 
+    /**
+     * 用于移除最先插入的元素（也就是最老的元素）。需要自己实现 {@link #removeEldestEntry}方法。
+     * <br>
+     * 默认情况下不会做这样的处理
+     *
+     * @param evict
+     */
     void afterNodeInsertion(boolean evict) { // possibly remove eldest
         LinkedHashMap.Entry<K,V> first;
         if (evict && (first = head) != null && removeEldestEntry(first)) {
